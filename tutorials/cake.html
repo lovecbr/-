@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10分钟微波炉戚风蛋糕 - HowToGuide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* 基础样式复用，重点优化教程详情布局 */
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #f8f9fa;
+      --text-color: #333;
+      --light-gray: #e9ecef;
+    }
+    .header-top {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.5rem 0;
+    }
+    .search-bar { max-width: 500px; }
+    .search-input {
+      border-radius: 20px 0 0 20px !important;
+      border-right: none !important;
+    }
+    .search-btn {
+      border-radius: 0 20px 20px 0 !important;
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    .tutorial-header {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .tutorial-meta {
+      color: #666;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .tutorial-meta i { color: var(--primary-color); margin-right: 0.3rem; }
+    .ingredients {
+      background: var(--secondary-color);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    .ingredients h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    .step-item {
+      margin: 2.5rem 0;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .step-number {
+      background: var(--primary-color);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    .step-content h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .step-img {
+      border-radius: 8px;
+      margin: 1rem 0;
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+    }
+    .interaction {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+    .interaction-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+    }
+    .related-tutorials { margin: 3rem 0; }
+    .related-card {
+      border: none !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 8px !important;
+    }
+    .related-img {
+      border-radius: 8px 8px 0 0 !important;
+      height: 150px;
+      object-fit: cover;
+    }
+    .footer {
+      background: var(--secondary-color);
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    .footer-link {
+      color: var(--text-color);
+      font-size: 0.9rem;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+    .footer-link:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- 头部导航（与首页一致） -->
+  <header class="header-top">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between flex-wrap">
+        <a href="/" class="text-decoration-none">
+          <h1 class="fs-2 text-primary-color mb-0">
+            <i class="fas fa-book-open"></i> HowToGuide
+          </h1>
+        </a>
+        <div class="search-bar d-flex my-2">
+          <input type="text" class="form-control search-input" placeholder="搜索教程（如：红烧肉）" aria-label="Search">
+          <button class="btn search-btn" type="button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="d-flex align-items-center">
+          <a href="/auth/login.html" class="btn btn-outline-primary me-2">登录</a>
+          <a href="/auth/register.html" class="btn btn-primary">注册</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 教程详情主体 -->
+  <main class="container">
+    <!-- 教程标题与封面 -->
+    <div class="tutorial-header">
+      <h1 class="fw-bold">10分钟微波炉戚风蛋糕，新手零失败</h1>
+      <div class="tutorial-meta">
+        <span><i class="fas fa-clock"></i> 准备时间：5分钟</span>
+        <span><i class="fas fa-fire"></i> 难度：简单</span>
+        <span><i class="fas fa-eye"></i> 浏览量：1.2万</span>
+        <span><i class="fas fa-calendar"></i> 更新时间：2024-05-20</span>
+      </div>
+      <img src="https://picsum.photos/id/42/800/400" alt="微波炉蛋糕成品" class="img-fluid rounded shadow">
+    </div>
+
+    <!-- 材料清单 -->
+    <div class="ingredients">
+      <h3><i class="fas fa-shopping-basket"></i> 准备材料（1人份）</h3>
+      <ul class="list-unstyled">
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> 鸡蛋：2个（分离蛋黄和蛋白）</li>
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> 低筋面粉：40g（过筛更佳）</li>
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> 白砂糖：30g（蛋白用20g，蛋黄用10g）</li>
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> 纯牛奶：20ml（或清水）</li>
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> 玉米油：10ml（或融化的黄油）</li>
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> 柠檬汁/白醋：1-2滴（去腥，可选）</li>
+      </ul>
+    </div>
+
+    <!-- 制作步骤（核心内容，步骤化展示） -->
+    <div class="steps">
+      <h3 class="fw-bold mb-4 text-center">制作步骤</h3>
+
+      <!-- 步骤1：分离蛋黄和蛋白 -->
+      <div class="step-item d-flex">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>分离蛋黄和蛋白，确保容器无油无水</h4>
+          <p>将两个鸡蛋的蛋黄和蛋白分别倒入两个干净的碗中（蛋白碗必须无油、无水、无蛋黄，否则蛋白难以打发）。如果不小心混入蛋黄，可用干净的蛋壳将其捞出。</p>
+          <img src="https://picsum.photos/id/65/800/400" alt="分离蛋黄蛋白" class="step-img">
+        </div>
+      </div>
+
+      <!-- 步骤2：制作蛋黄糊 -->
+      <div class="step-item d-flex">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>搅拌蛋黄、牛奶、油和面粉，制成蛋黄糊</h4>
+          <p>在蛋黄碗中加入10g白砂糖、20ml牛奶、10ml玉米油，用蛋抽搅拌至白砂糖完全融化；接着筛入40g低筋面粉，继续用蛋抽以“Z”字形搅拌（避免画圈搅拌，防止面粉起筋），直到无干粉颗粒，蛋黄糊顺滑无颗粒。</p>
+          <img src="https://picsum.photos/id/225/800/400" alt="制作蛋黄糊" class="step-img">
+        </div>
+      </div>
+
+      <!-- 步骤3：打发蛋白 -->
+      <div class="step-item d-flex">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>打发蛋白至硬性发泡</h4>
+          <p>在蛋白碗中滴入1-2滴柠檬汁（或白醋），用电动打蛋器低速打发至蛋白出现鱼眼泡；然后分3次加入20g白砂糖（第一次加1/3，打发至泡沫细腻；第二次加1/3，打发至出现纹路；第三次加剩余，打发至硬性发泡）。硬性发泡的判断标准：提起打蛋器，蛋白霜呈直立小尖角，不弯曲。</p>
+          <img src="https://picsum.photos/id/433/800/400" alt="打发蛋白" class="step-img">
+        </div>
+      </div>>
+
+      <!-- 步骤4：混合面糊并倒入容器 -->
+      <div class="step-item d-flex">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>混合蛋白霜和蛋黄糊，倒入微波炉容器</h4>
+          <p>取1/3蛋白霜倒入蛋黄糊中，用硅胶刮刀以“翻拌”的方式混合（像炒菜一样从底部往上翻，避免消泡）；混合均匀后，将所有面糊倒回剩余的蛋白霜中，继续翻拌至完全融合，面糊呈轻盈蓬松状。准备一个微波炉适用的容器（底部铺油纸更佳），将面糊倒入，轻轻震几下容器，排出内部气泡。</p>
+          <img src="https://picsum.photos/id/452/800/400" alt="混合面糊" class="step-img">
+        </div>
+      </div>
+
+      <!-- 步骤5：微波炉加热 -->
+      <div class="step-item d-flex">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>微波炉加热5-8分钟，完成蛋糕</h4>
+          <p>将装有面糊的容器放入微波炉，高火加热5-8分钟（不同微波炉功率不同，建议先加热5分钟，然后观察蛋糕是否凝固：用牙签插入蛋糕中心，拔出后无湿面糊带出即熟）。加热完成后取出容器，倒扣冷却2分钟（防止蛋糕塌陷），然后脱模即可食用。</p>
+          <img src="https://picsum.photos/id/42/800/400" alt="微波炉加热" class="step-img">
+        </div>
+      </div>
+    </div>
+
+    <!-- 用户互动区（点赞/收藏/分享） -->
+    <div class="interaction">
+      <button class="interaction-btn btn btn-outline-primary">
+        <i class="fas fa-thumbs-up"></i> 点赞（128）
+      </button>
+      <button class="interaction-btn btn btn-outline-primary">
+        <i class="fas fa-bookmark"></i> 收藏（56）
+      </button>
+      <button class="interaction-btn btn btn-outline-primary">
+        <i class="fas fa-share-alt"></i> 分享
+      </button>
+    </div>
+
+    <!-- 相关教程推荐 -->
+    <div class="related-tutorials">
+      <h3 class="fw-bold mb-3">你可能还喜欢</h3>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        <div class="col">
+          <div class="card related-card h-100">
+            <a href="/tutorials/yogurt.html">
+              <img src="https://picsum.photos/id/431/400/300" alt="自制酸奶" class="card-img-top related-img">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="/tutorials/yogurt.html" class="text-decoration-none text-dark">2种材料自制无糖酸奶</a>
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card related-card h-100">
+            <a href="/tutorials/lemon-soda.html">
+              <img src="https://picsum.photos/id/429/400/300" alt="柠檬气泡水" class="card-img-top related-img">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="/tutorials/lemon-soda.html" class="text-decoration-none text-dark">夏日柠檬气泡水</a>
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card related-card h-100">
+            <a href="/tutorials/egg-tart.html">
+              <img src="https://picsum.photos/id/291/400/300" alt="简易蛋挞" class="card-img-top related-img">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="/tutorials/egg-tart.html" class="text-decoration-none text-dark">不用酥皮的简易蛋挞</a>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="d-flex flex-column align-items-center">
+        <div class="mb-3">
+          <a href="/pages/about.html" class="footer-link">关于我们</a>
+          <a href="/pages/help.html" class="footer-link">帮助中心</a>
+          <a href="/auth/login.html" class="footer-link">登录</a>
+          <a href="/auth/register.html" class="footer-link">注册</a>
+        </div>
+        <p class="text-muted small">© 2024 HowToGuide 版权所有 | 实用教程平台</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 搜索功能JS -->
+  <script>
+    const searchBtn = document.querySelector('.search-btn');
+    const searchInput = document.querySelector('.search-input');
+    searchBtn.addEventListener('click', () => {
+      const keyword = searchInput.value.trim();
+      if (keyword) alert(`正在搜索“${keyword}”相关教程...`);
+      else alert('请输入搜索关键词');
+    });
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') searchBtn.click();
+    });
+
+    // 互动按钮效果（可选）
+    const interactionBtns = document.querySelectorAll('.interaction-btn');
+    interactionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('btn-primary');
+        btn.classList.toggle('btn-outline-primary');
+        // 模拟点赞/收藏数量变化
+        if (btn.querySelector('.fa-thumbs-up')) {
+          const text = btn.textContent.trim();
+          const num = parseInt(text.match(/\d+/)[0]);
+          btn.innerHTML = `<i class="fas fa-thumbs-up"></i> 点赞（${btn.classList.contains('btn-primary') ? num+1 : num-1}）`;
+        }
+        if (btn.querySelector('.fa-bookmark')) {
+          const text = btn.textContent.trim();
+          const num = parseInt(text.match(/\d+/)[0]);
+          btn.innerHTML = `<i class="fas fa-bookmark"></i> 收藏（${btn.classList.contains('btn-primary') ? num+1 : num-1}）`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
