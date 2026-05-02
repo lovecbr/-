@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我们 - HowToGuide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .header-top { background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 0.5rem 0; }
+    .about-content { max-width: 800px; margin: 3rem auto; }
+    .about-section { margin: 2rem 0; }
+    .about-section h3 { color: var(--primary-color); margin-bottom: 1rem; }
+    .footer { background: var(--secondary-color); padding: 2rem 0; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+  <!-- 头部导航（复用） -->
+  <header class="header-top">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="/" class="text-decoration-none">
+          <h1 class="fs-2 text-primary-color mb-0"><i class="fas fa-book-open"></i> HowToGuide</h1>
+        </a>
+        <div class="d-flex align-items-center">
+          <a href="/auth/login.html" class="btn btn-outline-primary me-2">登录</a>
+          <a href="/auth/register.html" class="btn btn-primary">注册</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 关于我们内容 -->
+  <main class="container">
+    <div class="about-content">
+      <h2 class="fw-bold text-center mb-4">关于 HowToGuide</h2>
+      
+      <div class="about-section">
+        <h3><i class="fas fa-lightbulb"></i> 我们的使命</h3>
+        <p>HowToGuide 是一个专注于实用生活教程的平台，致力于为用户提供“简单、易懂、可操作”的教程内容，涵盖美食烹饪、生活家居、电脑科技、宠物护理等多个领域。我们希望通过 step-by-step 的详细指导，帮助每个人解决生活中的实际问题，提升生活质量。</p>
+      </div>
+      
+      <div class="about-section">
+        <h3><i class="fas fa-users"></i> 我们的团队</h3>
+        <p>我们的团队由一群热爱生活、擅长总结的创作者组成，包括专业厨师、家居达人、科技博主、宠物医生等。所有教程均经过“实际操作验证”，确保步骤的准确性和可执行性，避免“纸上谈兵”。</p>
+      </div>
+      
+      <div class="about-section">
+        <h3><i class="fas fa-envelope"></i> 联系我们</h3>
+        <p>如果您有教程投稿、合作建议或问题反馈，欢迎通过以下方式联系我们：</p>
+        <ul class="list-unstyled">
+          <li class="mb-2"><i class="fas fa-envelope text-primary-color me-2"></i> 邮箱：contact@howtoguide.com</li>
+          <li class="mb-2"><i class="fas fa-weixin text-primary-color me-2"></i> 微信：HowToGuide2024</li>
+          <li><i class="fas fa-phone text-primary-color me-2"></i> 电话：400-123-4567</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚（复用） -->
+  <footer class="footer">
+    <div class="container">
+      <div class="d-flex flex-column align-items-center">
+        <div class="mb-3">
+          <a href="/pages/about.html" class="footer-link">关于我们</a>
+          <a href="/pages/help.html" class="footer-link">帮助中心</a>
+          <a href="/auth/login.html" class="footer-link">登录</a>
+          <a href="/auth/register.html" class="footer-link">注册</a>
+        </div>
+        <p class="text-muted small">© 2024 HowToGuide 版权所有</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
