@@ -136,14 +136,21 @@
                     </button>
                 </div>
 
-                <!-- 用户入口 -->
-                <div class="d-flex align-items-center">
-                    <a href="#" class="btn btn-outline-primary me-2">登录</a>
-                    <a href="#" class="btn btn-primary">注册</a>
-                </div>
-            </div>
-        </div>
-    </header>
+        <!-- 1. 首页顶部导航：登录/注册链接 -->
+<div class="d-flex align-items-center">
+  <a href="/auth/login.html" class="btn btn-outline-primary me-2">登录</a> <!-- 指向auth/login.html -->
+  <a href="/auth/register.html" class="btn btn-primary">注册</a> <!-- 指向auth/register.html -->
+</div>
+
+<!-- 2. 首页分类导航：指向categories下的分类页 -->
+<nav class="category-nav">
+  <div class="container d-flex justify-content-center flex-wrap">
+    <a href="/categories/life.html" class="category-link"><i class="fas fa-home"></i> 生活家居</a>
+    <a href="/categories/food.html" class="category-link"><i class="fas fa-utensils"></i> 美食烹饪</a>
+    <a href="/categories/tech.html" class="category-link"><i class="fas fa-laptop"></i> 电脑科技</a>
+    <a href="/categories/pet.html" class="category-link"><i class="fas fa-paw"></i> 宠物护理</a>
+  </div>
+</nav>
 
     <!-- 分类导航 -->
     <nav class="category-nav">
@@ -319,3 +326,16 @@
                 <div class="mb-3">
                     <a href="#" class="text-primary-color me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
                     <a href="#" class="text-primary-color me-3"><i class="fab fa
+<!-- 3. 首页底部链接：指向pages下的功能页 -->
+<footer class="footer">
+  <div class="container">
+    <div class="d-flex flex-column align-items-center">
+      <div class="mb-3">
+        <a href="/pages/about.html" class="footer-link">关于我们</a> <!-- 指向pages/about.html -->
+        <a href="/pages/help.html" class="footer-link">帮助中心</a> <!-- 指向pages/help.html -->
+        <a href="/auth/login.html" class="footer-link">登录</a>
+        <a href="/auth/register.html" class="footer-link">注册</a>
+      </div>
+    </div>
+  </div>
+</footer>
