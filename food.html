@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美食烹饪 - HowToGuide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* 复用首页样式，保持视觉统一 */
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #f8f9fa;
+      --text-color: #333;
+      --light-gray: #e9ecef;
+    }
+    .header-top {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.5rem 0;
+    }
+    .search-bar { max-width: 500px; }
+    .search-input {
+      border-radius: 20px 0 0 20px !important;
+      border-right: none !important;
+    }
+    .search-btn {
+      border-radius: 0 20px 20px 0 !important;
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    .category-nav {
+      background: var(--secondary-color);
+      padding: 0.5rem 0;
+      margin: 1rem 0;
+    }
+    .category-link {
+      color: var(--text-color);
+      font-size: 0.9rem;
+      margin: 0 0.8rem;
+      text-decoration: none;
+    }
+    .category-link:hover, .category-link.active {
+      color: var(--primary-color);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .tutorial-card {
+      border: none !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 8px !important;
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    .tutorial-card:hover { transform: translateY(-5px); }
+    .tutorial-img {
+      border-radius: 8px 8px 0 0 !important;
+      height: 180px;
+      object-fit: cover;
+    }
+    .ttutorial-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      text-decoration: none;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* 标题最多2行，超出省略 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .tutorial-title:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 1.5rem 0;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+    }
+    .section-title i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+    .footer {
+      background: var(--secondary-color);
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    .footer-link {
+      color: var(--text-color);
+      font-size: 0.9rem;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+    .footer-link:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- 头部导航（与首页一致，确保用户体验统一） -->
+  <header class="header-top">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between flex-wrap">
+        <a href="/" class="text-decoration-none">
+          <h1 class="fs-2 text-primary-color mb-0">
+            <i class="fas fa-book-open"></i> HowToGuide
+          </h1>
+        </a>
+        <div class="search-bar d-flex my-2">
+          <input type="text" class="form-control search-input" placeholder="搜索美食教程（如：红烧肉）" aria-label="Search">
+          <button class="btn search-btn" type="button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="d-flex align-items-center">
+          <a href="/auth/login.html" class="btn btn-outline-primary me-2">登录</a>
+          <a href="/auth/register.html" class="btn btn-primary">注册</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 分类导航（当前“美食烹饪”高亮） -->
+  <nav class="category-nav">
+    <div class="container d-flex justify-content-center flex-wrap">
+      <a href="/categories/life.html" class="category-link"><i class="fas fa-home"></i> 生活家居</a>
+      <a href="/categories/food.html" class="category-link active"><i class="fas fa-utensils"></i> 美食烹饪</a>
+      <a href="/categories/tech.html" class="category-link"><i class="fas fa-laptop"></i> 电脑科技</a>
+      <a href="/categories/pet.html" class="category-link"><i class="fas fa-paw"></i> 宠物护理</a>
+    </div>
+  </nav>
+
+  <!-- 主要内容：美食教程列表 -->
+  <main class="container">
+    <!-- 分类标题 -->
+    <h2 class="section-title"><i class="fas fa-utensils"></i> 美食烹饪教程</h2>
+    
+    <!-- 子分类标签（帮助用户快速筛选） -->
+    <div class="d-flex flex-wrap gap-2 mb-4">
+      <span class="badge bg-primary">全部</span>
+      <span class="badge bg-light text-dark">快手菜</span>
+      <span class="badge bg-light text-dark">烘焙甜点</span>
+      <span class="badge bg-light text-dark">家常菜</span>
+      <span class="badge bg-light text-dark">饮品制作</span>
+    </div>
+
+    <!-- 教程列表（网格布局，适配不同屏幕） -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 mb-5">
+      <!-- 教程1：微波炉蛋糕（跳转详情页 /tutorials/cake.html） -->
+      <div class="col">
+        <div class="card tutorial-card">
+          <a href="/tutorials/cake.html">
+            <img src="https://picsum.photos/id/42/400/300" alt="微波炉蛋糕" class="card-img-top tutorial-img">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/tutorials/cake.html" class="tutorial-title">10分钟微波炉戚风蛋糕，新手零失败</a>
+            </h5>
+            <p class="card-text text-muted small mt-2">
+              <i class="fas fa-clock"></i> 准备5分钟 | 
+              <i class="fas fa-fire"></i> 难度：简单 | 
+              <i class="fas fa-eye"></i> 1.2万浏览
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教程2：红烧肉（跳转详情页 /tutorials/braised-pork.html） -->
+      <div class="col">
+        <div class="card tutorial-card">
+          <a href="/tutorials/braised-pork.html">
+            <img src="https://picsum.photos/id/292/400/300" alt="红烧肉" class="card-img-top tutorial-img">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/tutorials/braised-pork.html" class="tutorial-title">软糯不腻的红烧肉，秘诀在这3步</a>
+            </h5>
+            <p class="card-text text-muted small mt-2">
+              <i class="fas fa-clock"></i> 准备30分钟 | 
+              <i class="fas fa-fire"></i> 难度：中等 | 
+              <i class="fas fa-eye"></i> 2.5万浏览
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教程3：自制酸奶（跳转详情页 /tutorials/yogurt.html） -->
+      <div class="col">
+        <div class="card tutorial-card">
+          <a href="/tutorials/yogurt.html">
+            <img src="https://picsum.photos/id/431/400/300" alt="自制酸奶" class="card-img-top tutorial-img">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/tutorials/yogurt.html" class="tutorial-title">2种材料自制无糖酸奶，无添加剂</a>
+            </h5>
+            <p class="card-text text-muted small mt-2">
+              <i class="fas fa-clock"></i> 发酵8小时 | 
+              <i class="fas fa-fire"></i> 难度：简单 | 
+              <i class="fas fa-eye"></i> 8.6千浏览
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教程4：番茄炒蛋（跳转详情页 /tutorials/tomato-egg.html） -->
+      <div class="col">
+        <div class="card tutorial-card">
+          <a href="/tutorials/tomato-egg.html">
+            <img src="https://picsum.photos/id/306/400/300" alt="番茄炒蛋" class="card-img-top tutorial-img">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/tutorials/tomato-egg.html" class="tutorial-title">家常番茄炒蛋，酸甜下饭有技巧</a>
+            </h5>
+            <p class="card-text text-muted small mt-2">
+              <i class="fas fa-clock"></i> 准备10分钟 | 
+              <i class="fas fa-fire"></i> 难度：简单 | 
+              <i class="fas fa-eye"></i> 3.2万浏览
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分页控件（教程多时分页） -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- 页脚（与首页一致） -->
+  <footer class="footer">
+    <div class="container">
+      <div class="d-flex flex-column align-items-center">
+        <div class="mb-3">
+          <a href="/pages/about.html" class="footer-link">关于我们</a>
+          <a href="/pages/help.html" class="footer-link">帮助中心</a>
+          <a href="/auth/login.html" class="footer-link">登录</a>
+          <a href="/auth/register.html" class="footer-link">注册</a>
+        </div>
+        <p class="text-muted small">© 2024 HowToGuide 版权所有 | 实用教程平台</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 搜索功能JS（可选，提升体验） -->
+  <script>
+    const searchBtn = document.querySelector('.search-btn');
+    const searchInput = document.querySelector('.search-input');
+    searchBtn.addEventListener('click', () => {
+      const keyword = searchInput.value.trim();
+      if (keyword) alert(`正在搜索“${keyword}”相关美食教程...`);
+      else alert('请输入搜索关键词');
+    });
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') searchBtn.click();
+    });
+  </script>
+</body>
+</html>
