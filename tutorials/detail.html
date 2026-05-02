@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教程详情 - HowToGuide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #f8f9fa;
+      --text-color: #333;
+    }
+    body { background: #fff; color: var(--text-color); }
+    .header-top {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.5rem 0;
+    }
+    .brand-title {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    .category-nav {
+      background-color: var(--secondary-color);
+      padding: 0.5rem 0;
+      margin: 1rem 0;
+    }
+    .category-link {
+      color: var(--text-color);
+      font-size: 0.95rem;
+      margin: 0 0.8rem;
+      text-decoration: none;
+    }
+    .category-link:hover, .category-link.active {
+      color: var(--primary-color);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    .hero-img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+    .article-box {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+    }
+    .step-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 0.8rem 0 1.2rem;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 1.5rem 0 1rem;
+      display: flex;
+      align-items: center;
+    }
+    .section-title i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+    .footer {
+      background-color: var(--secondary-color);
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    .footer-link {
+      color: var(--text-color);
+      font-size: 0.9rem;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+    .footer-link:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    .meta-item {
+      color: #666;
+      margin-right: 1rem;
+      font-size: 0.95rem;
+    }
+    .nav-btns .btn {
+      min-width: 110px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header-top">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <a href="/" class="text-decoration-none">
+          <h1 class="fs-2 brand-title mb-0">
+            <i class="fas fa-book-open"></i> HowToGuide
+          </h1>
+        </a>
+        <div class="d-flex align-items-center">
+          <a href="/auth/login.html" class="btn btn-outline-primary me-2">登录</a>
+          <a href="/auth/register.html" class="btn btn-primary">注册</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="category-nav">
+    <div class="container d-flex justify-content-center flex-wrap">
+      <a href="/categories/life.html" class="category-link"><i class="fas fa-home"></i> 生活家居</a>
+      <a href="/categories/food.html" class="category-link active"><i class="fas fa-utensils"></i> 美食烹饪</a>
+      <a href="/categories/tech.html" class="category-link"><i class="fas fa-laptop"></i> 电脑科技</a>
+      <a href="/categories/phone.html" class="category-link"><i class="fas fa-mobile-alt"></i> 手机技巧</a>
+      <a href="/categories/pet.html" class="category-link"><i class="fas fa-paw"></i> 宠物护理</a>
+    </div>
+  </nav>
+
+  <main class="container py-3">
+    <div class="mb-3">
+      <a href="#" id="backLink" class="text-decoration-none">
+        <i class="fas fa-arrow-left"></i> 返回
+      </a>
+    </div>
+
+    <div id="content" class="article-box"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="mb-3">
+        <a href="/" class="footer-link">首页</a>
+        <a href="/categories/life.html" class="footer-link">生活家居</a>
+        <a href="/categories/food.html" class="footer-link">美食烹饪</a>
+        <a href="/categories/tech.html" class="footer-link">电脑科技</a>
+        <a href="/categories/phone.html" class="footer-link">手机技巧</a>
+        <a href="/categories/pet.html" class="footer-link">宠物护理</a>
+      </div>
+      <p class="text-muted mb-0">© 2026 HowToGuide</p>
+    </div>
+  </footer>
+
+  <script>
+    const tutorials = {
+      "cake": {
+        title: "10分钟微波炉戚风蛋糕，新手零失败",
+        category: "美食烹饪",
+        time: "5分钟准备 / 10分钟制作",
+        difficulty: "简单",
+        views: "1.2万",
+        image: "https://picsum.photos/seed/cake/1200/700",
+        intro: "不需要烤箱，只用微波炉就能做出蓬松细腻的戚风蛋糕。适合厨房新手和临时想吃甜点的时候。",
+        ingredients: ["鸡蛋 2个", "低筋面粉 50g", "牛奶 30ml", "白砂糖 25g", "玉米油 20ml", "柠檬汁少许"],
+        steps: [
+          { title: "1. 分离蛋清蛋黄", text: "将鸡蛋分离，蛋清放入无水无油的碗中，蛋黄备用。", img: "https://picsum.photos/seed/cake-step1/1000/600" },
+          { title: "2. 调蛋黄糊", text: "蛋黄加入牛奶、玉米油，搅匀后筛入低筋面粉，拌成细腻面糊。", img: "https://picsum.photos/seed/cake-step2/1000/600" },
+          { title: "3. 打发蛋白", text: "蛋清加柠檬汁和白砂糖，打发至湿性发泡，提起有弯钩。", img: "https://picsum.photos/seed/cake-step3/1000/600" },
+          { title: "4. 混合并加热", text: "将蛋白霜分两次拌入蛋黄糊，倒入模具，微波炉中火加热10分钟。", img: "https://picsum.photos/seed/cake-step4/1000/600" }
+        ],
+        tips: ["蛋白盆一定要无水无油。", "微波炉功率不同，可根据实际情况微调时间。", "出炉后倒扣放凉更蓬松。"]
+      },
+      "braised-pork": {
+        title: "软糯不腻的红烧肉，秘诀在这3步",
+        category: "美食烹饪",
+        time: "30分钟准备 / 60分钟炖煮",
+        difficulty: "中等",
+        views: "2.5万",
+        image: "https://picsum.photos/seed/braised-pork/1200/700",
+        intro: "这道红烧肉肥而不腻、入口即化，关键在于焯水、炒糖色、慢炖这三个步骤。",
+        ingredients: ["五花肉 500g", "冰糖 20g", "生抽 2勺", "老抽 1勺", "料酒 2勺", "姜片 5片", "葱段适量"],
+        steps: [
+          { title: "1. 五花肉焯水", text: "五花肉切块，冷水下锅焯水，去除血沫后捞出沥干。", img: "https://picsum.photos/seed/braised-step1/1000/600" },
+          { title: "2. 炒糖色", text: "锅中少油放冰糖，小火炒至琥珀色，倒入五花肉快速翻炒上色。", img: "https://picsum.photos/seed/braised-step2/1000/600" },
+          { title: "3. 加调料炖煮", text: "加入姜葱、生抽、老抽、料酒和没过肉的热水，炖40-60分钟。", img: "https://picsum.photos/seed/braised-step3/1000/600" },
+          { title: "4. 收汁装盘", text: "大火收汁，让肉块充分裹上酱汁，最后撒葱花即可。", img: "https://picsum.photos/seed/braised-step4/1000/600" }
+        ],
+        tips: ["糖色一定小火，不要炒糊。", "建议用热水炖，肉更嫩。", "收汁时多翻动，避免粘锅。"]
+      },
+      "yogurt": {
+        title: "2种材料自制无糖酸奶，无添加剂",
+        category: "美食烹饪",
+        time: "10分钟准备 / 8小时发酵",
+        difficulty: "简单",
+        views: "8.6千",
+        image: "https://picsum.photos/seed/yogurt/1200/700",
+        intro: "只需要牛奶和酸奶菌种，就能做出细腻顺滑的无糖酸奶，健康又省钱。",
+        ingredients: ["纯牛奶 1L", "原味酸奶 100g"],
+        steps: [
+          { title: "1. 器具消毒", text: "将容器和勺子用热水烫洗，保持无油无杂质。", img: "https://picsum.photos/seed/yogurt-step1/1000/600" },
+          { title: "2. 混合菌种", text: "倒入牛奶后加入原味酸奶，搅拌均匀。", img: "https://picsum.photos/seed/yogurt-step2/1000/600" },
+          { title: "3. 保温发酵", text: "密封后放入酸奶机或保温环境，静置8小时左右。", img: "https://picsum.photos/seed/yogurt-step3/1000/600" },
+          { title: "4. 冷藏定型", text: "发酵完成后放入冰箱冷藏，口感会更浓稠。", img: "https://picsum.photos/seed/yogurt-step4/1000/600" }
+        ],
+        tips: ["发酵过程中不要频繁打开盖子。", "温度过高会影响发酵效果。", "可搭配蜂蜜和水果食用。"]
+      },
+      "spaghetti": {
+        title: "煮意面不粘坨，附番茄肉酱做法",
+        category: "美食烹饪",
+        time: "20分钟",
+        difficulty: "中等",
+        views: "1.8万",
+        image: "https://picsum.photos/seed/spaghetti/1200/700",
+        intro: "这份意大利面教程不仅教你煮面不粘，还附上超下饭的番茄肉酱做法。",
+        ingredients: ["意大利面 200g", "番茄 2个", "肉末 150g", "洋葱 半个", "番茄酱 2勺", "橄榄油适量", "盐、黑胡椒适量"],
+        steps: [
+          { title: "1. 煮意面", text: "水开后加盐和少许油，按包装时间煮意面至八成熟。", img: "https://picsum.photos/seed/spaghetti-step1/1000/600" },
+          { title: "2. 炒肉末", text: "锅中少油，加入洋葱丁和肉末翻炒至变色。", img: "https://picsum.photos/seed/spaghetti-step2/1000/600" },
+          { title: "3. 做番茄酱", text: "加入番茄丁、番茄酱，小火熬煮成浓稠酱汁。", img: "https://picsum.photos/seed/spaghetti-step3/1000/600" },
+          { title: "4. 拌面出锅", text: "倒入意面和酱汁翻拌均匀，撒黑胡椒即可。", img: "https://picsum.photos/seed/spaghetti-step4/1000/600" }
+        ],
+        tips: ["煮面时锅要大，水要多。", "面条捞出后可以保留少量面汤用于调稠。"]
+      },
+      "lemon-soda": {
+        title: "夏日解渴柠檬气泡水，5分钟搞定",
+        category: "美食烹饪",
+        time: "5分钟",
+        difficulty: "简单",
+        views: "6.3千",
+        image: "https://picsum.photos/seed/lemon-soda/1200/700",
+        intro: "冰爽、清新、低负担，适合夏天做的一杯自制气泡饮。",
+        ingredients: ["柠檬 1个", "气泡水 300ml", "蜂蜜或糖浆 适量", "薄荷叶少许", "冰块适量"],
+        steps: [
+          { title: "1. 处理柠檬", text: "柠檬切片，取出几片备用，也可轻轻挤出少量柠檬汁。", img: "https://picsum.photos/seed/lemon-step1/1000/600" },
+          { title: "2. 加冰块", text: "杯中放入冰块，让饮品更冰爽。", img: "https://picsum.photos/seed/lemon-step2/1000/600" },
+          { title: "3. 倒入气泡水", text: "加入气泡水和少量蜂蜜，轻轻搅拌。", img: "https://picsum.photos/seed/lemon-step3/1000/600" },
+          { title: "4. 装饰完成", text: "放上柠檬片和薄荷叶即可饮用。", img: "https://picsum.photos/seed/lemon-step4/1000/600" }
+        ],
+        tips: ["蜂蜜不要加太多，避免过甜。", "气泡水要最后倒，口感更足。"]
+      },
+      "egg-tart": {
+        title: "不用酥皮的简易蛋挞，外脆里嫩",
+        category: "美食烹饪",
+        time: "25分钟",
+        difficulty: "中等",
+        views: "1.1万",
+        image: "https://picsum.photos/seed/egg-tart/1200/700",
+        intro: "不需要复杂酥皮，用现成挞皮或面糊也能做出香甜嫩滑的蛋挞。",
+        ingredients: ["蛋挞皮 8个", "鸡蛋 2个", "牛奶 150ml", "淡奶油 50ml", "白砂糖 20g"],
+        steps: [
+          { title: "1. 调蛋挞液", text: "鸡蛋打散后加入牛奶、淡奶油和白砂糖，搅匀并过筛。", img: "https://picsum.photos/seed/egg-step1/1000/600" },
+          { title: "2. 倒入挞皮", text: "将蛋挞液倒入蛋挞皮，七八分满即可。", img: "https://picsum.photos/seed/egg-step2/1000/600" },
+          { title: "3. 预热烘烤", text: "烤箱提前预热，200℃烤15分钟左右。", img: "https://picsum.photos/seed/egg-step3/1000/600" },
+          { title: "4. 上色出炉", text: "表面微焦、蛋液凝固后即可出炉放凉。", img: "https://picsum.photos/seed/egg-step4/1000/600" }
+        ],
+        tips: ["蛋挞液一定要过滤，口感更细腻。", "烤到表面微焦最香。"]
+      },
+      "tomato-egg": {
+        title: "家常番茄炒蛋，酸甜下饭有技巧",
+        category: "美食烹饪",
+        time: "10分钟",
+        difficulty: "简单",
+        views: "3.2万",
+        image: "https://picsum.photos/seed/tomato-egg/1200/700",
+        intro: "番茄炒蛋看似简单，但想做得酸甜开胃、鸡蛋嫩滑，还是有小技巧的。",
+        ingredients: ["鸡蛋 3个", "番茄 2个", "盐少许", "糖少许", "葱花适量"],
+        steps: [
+          { title: "1. 打蛋", text: "鸡蛋加少许盐打散，热锅冷油下锅炒至嫩滑盛出。", img: "https://picsum.photos/seed/tomato-step1/1000/600" },
+          { title: "2. 炒番茄", text: "番茄切块后下锅炒出汁水，可以加一点糖提味。", img: "https://picsum.photos/seed/tomato-step2/1000/600" },
+          { title: "3. 混合翻炒", text: "加入炒好的鸡蛋，快速翻炒均匀。", img: "https://picsum.photos/seed/tomato-step3/1000/600" },
+          { title: "4. 收汁装盘", text: "根据口味补少许盐，撒葱花后出锅。", img: "https://picsum.photos/seed/tomato-step4/1000/600" }
+        ],
+        tips: ["先炒蛋再炒番茄，蛋更嫩。", "喜欢浓汁的可加少许番茄酱。"]
+      },
+      "avocado-salad": {
+        title: "低脂牛油果沙拉，健身轻食必备",
+        category: "美食烹饪",
+        time: "8分钟",
+        difficulty: "简单",
+        views: "9.4千",
+        image: "https://picsum.photos/seed/avocado-salad/1200/700",
+        intro: "牛油果沙拉适合减脂期和日常轻食，营养均衡，做法也很简单。",
+        ingredients: ["牛油果 1个", "生菜适量", "小番茄 6颗", "鸡胸肉 100g", "沙拉酱或油醋汁适量"],
+        steps: [
+          { title: "1. 处理食材", text: "生菜洗净撕块，小番茄对半切开，牛油果切片。", img: "https://picsum.photos/seed/salad-step1/1000/600" },
+          { title: "2. 煎鸡胸肉", text: "鸡胸肉煎熟后切片，增加蛋白质。", img: "https://picsum.photos/seed/salad-step2/1000/600" },
+          { title: "3. 组合摆盘", text: "将所有食材放入碗中，注意颜色搭配。", img: "https://picsum.photos/seed/salad-step3/1000/600" },
+          { title: "4. 淋酱开吃", text: "淋上油醋汁或低脂沙拉酱即可。", img: "https://picsum.photos/seed/salad-step4/1000/600" }
+        ],
+        tips: ["牛油果不要太生，口感更好。", "减脂期建议用油醋汁。"]
+      },
+
+      "closet": {
+        title: "衣柜收纳整理，三分钟恢复整洁",
+        category: "生活家居",
+        time: "15分钟",
+        difficulty: "简单",
+        views: "7.2千",
+        image: "https://picsum.photos/seed/closet/1200/700",
+        intro: "通过分类、折叠和分区收纳，让衣柜瞬间变得整齐，拿取也更方便。",
+        ingredients: ["收纳盒 2-3个", "衣架若干", "真空收纳袋（可选）", "标签贴纸"],
+        steps: [
+          { title: "1. 清空衣柜", text: "把衣物全部拿出来，准备重新分类整理。", img: "https://picsum.photos/seed/closet-step1/1000/600" },
+          { title: "2. 按季节分类", text: "将常穿、换季、长期不穿的衣物分开。", img: "https://picsum.photos/seed/closet-step2/1000/600" },
+          { title: "3. 分区收纳", text: "上层放换季物品，中层放常用衣物，下层放配件。", img: "https://picsum.photos/seed/closet-step3/1000/600" }
+        ],
+        tips: ["尽量竖放衣物，节省空间。", "给收纳盒贴标签，找东西更快。"]
+      },
+      "bathroom-cleaning": {
+        title: "卫生间去污除味，清洁更轻松",
+        category: "生活家居",
+        time: "20分钟",
+        difficulty: "简单",
+        views: "1.1万",
+        image: "https://picsum.photos/seed/bathroom-cleaning/1200/700",
+        intro: "卫生间容易积垢和有异味，掌握正确顺序，清洁效率更高。",
+        ingredients: ["清洁剂", "刷子", "抹布", "手套"],
+        steps: [
+          { title: "1. 喷洒清洁剂", text: "在马桶、洗手台和墙面重点区域喷洒清洁剂。", img: "https://picsum.photos/seed/bathroom-step1/1000/600" },
+          { title: "2. 刷洗污渍", text: "用刷子清理缝隙和积垢位置，尤其注意边角。", img: "https://picsum.photos/seed/bathroom-step2/1000/600" },
+          { title: "3. 通风除味", text: "清洁后打开窗户或排风扇，加快空气流通。", img: "https://picsum.photos/seed/bathroom-step3/1000/600" }
+        ],
+        tips: ["清洁时记得戴手套。", "地漏也要定期处理防止异味。"]
+      },
+      "wardrobe-organize": {
+        title: "换季衣柜整理，空间瞬间翻倍",
+        category: "生活家居",
+        time: "25分钟",
+        difficulty: "简单",
+        views: "8.4千",
+        image: "https://picsum.photos/seed/wardrobe-organize/1200/700",
+        intro: "换季时最适合重新整理衣柜，把闲置衣物压缩存放。",
+        ingredients: ["真空袋", "收纳箱", "分类标签"],
+        steps: [
+          { title: "1. 分类挑选", text: "把当前季节需要的衣物留下，其余准备收纳。", img: "https://picsum.photos/seed/wardrobe-organize-step1/1000/600" },
+          { title: "2. 压缩打包", text: "将厚衣服放进真空袋，减少占用空间。", img: "https://picsum.photos/seed/wardrobe-organize-step2/1000/600" },
+          { title: "3. 标签归档", text: "不同箱子贴上标签，方便下次取用。", img: "https://picsum.photos/seed/wardrobe-organize-step3/1000/600" }
+        ],
+        tips: ["收纳前先洗干净并晒干。", "常用物品放在最容易拿的位置。"]
+      },
+      "window-clean": {
+        title: "窗户擦拭不留痕，干净透亮",
+        category: "生活家居",
+        time: "15分钟",
+        difficulty: "简单",
+        views: "5.6千",
+        image: "https://picsum.photos/seed/window-clean/1200/700",
+        intro: "使用正确工具和顺序，窗户可以擦得很透亮，还不容易留水痕。",
+        ingredients: ["玻璃清洁剂", "刮水器", "抹布", "报纸（可选）"],
+        steps: [
+          { title: "1. 喷清洁剂", text: "均匀喷洒在玻璃表面。", img: "https://picsum.photos/seed/window-clean-step1/1000/600" },
+          { title: "2. 刮水处理", text: "用刮水器从上到下清理水痕。", img: "https://picsum.photos/seed/window-clean-step2/1000/600" },
+          { title: "3. 边角擦拭", text: "用干抹布处理边角残留污渍。", img: "https://picsum.photos/seed/window-clean-step3/1000/600" }
+        ],
+        tips: ["阴天清洁更不容易留痕。", "报纸擦拭玻璃也很有效。"]
+      },
+
+      "slow-pc": {
+        title: "电脑开机慢？3步优化速度",
+        category: "电脑科技",
+        time: "20分钟",
+        difficulty: "简单",
+        views: "1.9万",
+        image: "https://picsum.photos/seed/slow-pc/1200/700",
+        intro: "从启动项、磁盘空间和系统更新三个方向优化，开机速度会明显提升。",
+        ingredients: ["Windows 电脑", "磁盘清理工具", "任务管理器"],
+        steps: [
+          { title: "1. 管理启动项", text: "在任务管理器中关闭不必要的开机启动程序。", img: "https://picsum.photos/seed/slow-pc-step1/1000/600" },
+          { title: "2. 清理磁盘", text: "删除临时文件和无用软件，释放系统盘空间。", img: "https://picsum.photos/seed/slow-pc-step2/1000/600" },
+          { title: "3. 更新系统", text: "安装系统补丁和驱动，保证运行更稳定。", img: "https://picsum.photos/seed/slow-pc-step3/1000/600" }
+        ],
+        tips: ["建议系统盘保留至少 20% 空间。", "开机软件越少越快。"]
+      },
+      "c-drive-clean": {
+        title: "C盘空间不足，快速清理方法",
+        category: "电脑科技",
+        time: "15分钟",
+        difficulty: "简单",
+        views: "2.1万",
+        image: "https://picsum.photos/seed/c-drive-clean/1200/700",
+        intro: "C盘满了会导致电脑卡顿，掌握几个清理点就能快速释放空间。",
+        ingredients: ["Windows 电脑", "文件管理器", "系统清理工具"],
+        steps: [
+          { title: "1. 删除临时文件", text: "清理系统缓存、下载残留和临时文件。", img: "https://picsum.photos/seed/c-drive-clean-step1/1000/600" },
+          { title: "2. 卸载大软件", text: "删除不常用的软件或转移到其他盘。", img: "https://picsum.photos/seed/c-drive-clean-step2/1000/600" },
+          { title: "3. 清空回收站", text: "释放被占用的磁盘空间。", img: "https://picsum.photos/seed/c-drive-clean-step3/1000/600" }
+        ],
+        tips: ["不要乱删系统文件。", "微信/QQ缓存也很占空间。"]
+      },
+      "wifi-optimize": {
+        title: "Wi-Fi 变慢？路由器这样设置更稳定",
+        category: "电脑科技",
+        time: "10分钟",
+        difficulty: "简单",
+        views: "1.4万",
+        image: "https://picsum.photos/seed/wifi-optimize/1200/700",
+        intro: "通过合理摆放路由器、切换信道和重启设置，网络会更稳定。",
+        ingredients: ["路由器", "手机或电脑"],
+        steps: [
+          { title: "1. 调整摆放位置", text: "把路由器放在房屋中间、空旷位置。", img: "https://picsum.photos/seed/wifi-optimize-step1/1000/600" },
+          { title: "2. 切换信道", text: "避免和邻居 Wi-Fi 干扰，手动选择较空闲信道。", img: "https://picsum.photos/seed/wifi-optimize-step2/1000/600" },
+          { title: "3. 定期重启", text: "每隔一段时间重启一次路由器，保持稳定。", img: "https://picsum.photos/seed/wifi-optimize-step3/1000/600" }
+        ],
+        tips: ["2.4G 更远，5G 更快。", "尽量别把路由器放在金属柜里。"]
+      },
+      "screenshot": {
+        title: "截图与录屏技巧，办公效率提升",
+        category: "电脑科技",
+        time: "10分钟",
+        difficulty: "简单",
+        views: "9.8千",
+        image: "https://picsum.photos/seed/screenshot/1200/700",
+        intro: "掌握系统自带的截图和录屏功能，能让你在工作和学习中更高效。",
+        ingredients: ["Windows 或 macOS 电脑"],
+        steps: [
+          { title: "1. 学会截图", text: "使用快捷键快速截屏并保存。", img: "https://picsum.photos/seed/screenshot-step1/1000/600" },
+          { title: "2. 标注重点", text: "用系统标注或画图工具标出关键内容。", img: "https://picsum.photos/seed/screenshot-step2/1000/600" },
+          { title: "3. 开始录屏", text: "使用自带录屏工具录制教程或演示。", img: "https://picsum.photos/seed/screenshot-step3/1000/600" }
+        ],
+        tips: ["Win + Shift + S 是常用截图快捷键。", "录屏前先关闭无关通知。"]
+      },
+
+      "cache-clean": {
+        title: "手机缓存清理，运行更流畅",
+        category: "手机技巧",
+        time: "8分钟",
+        difficulty: "简单",
+        views: "1.6万",
+        image: "https://picsum.photos/seed/cache-clean/1200/700",
+        intro: "手机卡顿很多时候是缓存太多，定期清理可以明显提升流畅度。",
+        ingredients: ["手机", "系统清理功能"],
+        steps: [
+          { title: "1. 查看存储", text: "先看哪些应用占用了大量空间。", img: "https://picsum.photos/seed/cache-clean-step1/1000/600" },
+          { title: "2. 清理缓存", text: "删除不必要的缓存和重复文件。", img: "https://picsum.photos/seed/cache-clean-step2/1000/600" },
+          { title: "3. 重启手机", text: "清理后重启一次，系统会更顺畅。", img: "https://picsum.photos/seed/cache-clean-step3/1000/600" }
+        ],
+        tips: ["不要随便删除系统文件。", "聊天软件缓存通常最多。"]
+      },
+      "battery-save": {
+        title: "手机省电设置，续航明显提升",
+        category: "手机技巧",
+        time: "10分钟",
+        difficulty: "简单",
+        views: "2.4万",
+        image: "https://picsum.photos/seed/battery-save/1200/700",
+        intro: "通过关闭高耗电功能和优化后台设置，手机电量会更耐用。",
+        ingredients: ["手机", "电池设置"],
+        steps: [
+          { title: "1. 关闭高耗电功能", text: "降低屏幕亮度、关闭高刷和定位。", img: "https://picsum.photos/seed/battery-save-step1/1000/600" },
+          { title: "2. 限制后台应用", text: "减少应用后台自动刷新。", img: "https://picsum.photos/seed/battery-save-step2/1000/600" },
+          { title: "3. 开启省电模式", text: "在电量低时启用系统省电模式。", img: "https://picsum.photos/seed/battery-save-step3/1000/600" }
+        ],
+        tips: ["夜间可以开启飞行模式。", "部分壁纸和动画也会耗电。"]
+      },
+      "wechat-backup": {
+        title: "微信聊天记录备份与迁移",
+        category: "手机技巧",
+        time: "12分钟",
+        difficulty: "中等",
+        views: "1.3万",
+        image: "https://picsum.photos/seed/wechat-backup/1200/700",
+        intro: "换手机前先备份微信聊天记录，避免重要信息丢失。",
+        ingredients: ["微信", "另一台手机或电脑"],
+        steps: [
+          { title: "1. 打开迁移功能", text: "在微信设置里找到聊天记录迁移与备份。", img: "https://picsum.photos/seed/wechat-backup-step1/1000/600" },
+          { title: "2. 选择数据", text: "勾选需要迁移的聊天记录。", img: "https://picsum.photos/seed/wechat-backup-step2/1000/600" },
+          { title: "3. 完成传输", text: "按提示完成扫码或连接传输。", img: "https://picsum.photos/seed/wechat-backup-step3/1000/600" }
+        ],
+        tips: ["传输时两台设备尽量靠近。", "建议连接稳定 Wi-Fi。"]
+      },
+      "photo-tips": {
+        title: "手机拍照构图与夜景技巧",
+        category: "手机技巧",
+        time: "15分钟",
+        difficulty: "简单",
+        views: "9.1千",
+        image: "https://picsum.photos/seed/photo-tips/1200/700",
+        intro: "只要掌握构图、对焦和夜景模式，手机也能拍出更好看的照片。",
+        ingredients: ["手机相机", "稳定手持"],
+        steps: [
+          { title: "1. 选好构图", text: "使用三分法让画面更平衡。", img: "https://picsum.photos/seed/photo-tips-step1/1000/600" },
+          { title: "2. 手动对焦", text: "点击主体对焦并适当调节曝光。", img: "https://picsum.photos/seed/photo-tips-step2/1000/600" },
+          { title: "3. 开启夜景", text: "在光线不足时使用夜景模式。", img: "https://picsum.photos/seed/photo-tips-step3/1000/600" }
+        ],
+        tips: ["拍照时尽量保持手稳。", "逆光场景可适当提高曝光。"]
+      },
+
+      "cat-litter": {
+        title: "猫砂盆清洁除味，家里更清新",
+        category: "宠物护理",
+        time: "10分钟",
+        difficulty: "简单",
+        views: "7.5千",
+        image: "https://picsum.photos/seed/cat-litter/1200/700",
+        intro: "猫砂盆清洁是否及时，直接影响家里气味和猫咪使用习惯。",
+        ingredients: ["猫砂铲", "垃圾袋", "除味剂", "新猫砂"],
+        steps: [
+          { title: "1. 清理结团", text: "每天用猫砂铲清理结团和排泄物。", img: "https://picsum.photos/seed/cat-litter-step1/1000/600" },
+          { title: "2. 倒掉旧砂", text: "定期清空旧猫砂并清洗盆体。", img: "https://picsum.photos/seed/cat-litter-step2/1000/600" },
+          { title: "3. 补充新砂", text: "加入新的猫砂并保持适当厚度。", img: "https://picsum.photos/seed/cat-litter-step3/1000/600" }
+        ],
+        tips: ["猫砂盆最好每天清理一次。", "放在通风处更不容易有味道。"]
+      },
+      "dog-bath": {
+        title: "狗狗洗澡步骤，避免应激更安心",
+        category: "宠物护理",
+        time: "20分钟",
+        difficulty: "中等",
+        views: "8.3千",
+        image: "https://picsum.photos/seed/dog-bath/1200/700",
+        intro: "给狗狗洗澡要控制水温、节奏和吹干方式，避免狗狗紧张。",
+        ingredients: ["宠物沐浴露", "毛巾", "吹风机", "梳子"],
+        steps: [
+          { title: "1. 先梳毛", text: "洗澡前先梳开打结毛发。", img: "https://picsum.photos/seed/dog-bath-step1/1000/600" },
+          { title: "2. 温水冲洗", text: "使用温水并避开眼耳。", img: "https://picsum.photos/seed/dog-bath-step2/1000/600" },
+          { title: "3. 吹干毛发", text: "洗后及时吹干，避免着凉。", img: "https://picsum.photos/seed/dog-bath-step3/1000/600" }
+        ],
+        tips: ["洗澡频率不要太高。", "选择宠物专用沐浴露。"]
+      },
+      "deworming": {
+        title: "宠物驱虫与日常防护要点",
+        category: "宠物护理",
+        time: "10分钟",
+        difficulty: "简单",
+        views: "1.0万",
+        image: "https://picsum.photos/seed/deworming/1200/700",
+        intro: "驱虫是宠物健康管理的重要一步，内外驱都要按计划进行。",
+        ingredients: ["驱虫药", "记录表", "体重信息"],
+        steps: [
+          { title: "1. 确认体重", text: "按宠物体重选择合适剂量。", img: "https://picsum.photos/seed/deworming-step1/1000/600" },
+          { title: "2. 按时用药", text: "按照说明进行内外驱虫。", img: "https://picsum.photos/seed/deworming-step2/1000/600" },
+          { title: "3. 记录时间", text: "做好记录，避免重复或漏服。", img: "https://picsum.photos/seed/deworming-step3/1000/600" }
+        ],
+        tips: ["驱虫前先咨询兽医。", "注意观察用药后的反应。"]
+      },
+      "nail-cut": {
+        title: "宠物剪指甲，安全不伤手脚",
+        category: "宠物护理",
+        time: "8分钟",
+        difficulty: "中等",
+        views: "6.9千",
+        image: "https://picsum.photos/seed/nail-cut/1200/700",
+        intro: "给宠物剪指甲要轻柔、分次进行，避免剪到血线。",
+        ingredients: ["宠物指甲剪", "止血粉（可选）", "零食奖励"],
+        steps: [
+          { title: "1. 安抚情绪", text: "先让宠物放松，给予零食奖励。", img: "https://picsum.photos/seed/nail-cut-step1/1000/600" },
+          { title: "2. 少量修剪", text: "每次只剪尖端，避免伤到血线。", img: "https://picsum.photos/seed/nail-cut-step2/1000/600" },
+          { title: "3. 检查打磨", text: "修剪后检查边缘是否尖锐。", img: "https://picsum.photos/seed/nail-cut-step3/1000/600" }
+        ],
+        tips: ["第一次剪可以分多次完成。", "如果不熟悉可以请宠物店帮忙。"]
+      }
+    };
+
+    const order = [
+      "cake", "braised-pork", "yogurt", "spaghetti", "lemon-soda", "egg-tart", "tomato-egg", "avocado-salad",
+      "closet", "bathroom-cleaning", "wardrobe-organize", "window-clean",
+      "slow-pc", "c-drive-clean", "wifi-optimize", "screenshot",
+      "cache-clean", "battery-save", "wechat-backup", "photo-tips",
+      "cat-litter", "dog-bath", "deworming", "nail-cut"
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug") || "cake";
+    const data = tutorials[slug];
+
+    const backLink = document.getElementById("backLink");
+
+    if (!data) {
+      window.location.href = "/categories/food.html";
+    } else {
+      const currentIndex = order.indexOf(slug);
+      const prevSlug = currentIndex > 0 ? order[currentIndex - 1] : null;
+      const nextSlug = currentIndex < order.length - 1 ? order[currentIndex + 1] : null;
+
+      document.title = data.title + " - HowToGuide";
+      backLink.href = data.category === "美食烹饪" ? "/categories/food.html" :
+                     data.category === "生活家居" ? "/categories/life.html" :
+                     data.category === "电脑科技" ? "/categories/tech.html" :
+                     data.category === "手机技巧" ? "/categories/phone.html" :
+                     "/categories/pet.html";
+      backLink.innerHTML = `<i class="fas fa-arrow-left"></i> 返回${data.category}列表`;
+
+      document.getElementById("content").innerHTML = `
+        <h2 class="fw-bold mb-3">${data.title}</h2>
+        <div class="mb-3">
+          <span class="badge bg-primary me-2">${data.category}</span>
+          <span class="meta-item"><i class="fas fa-clock"></i> ${data.time}</span>
+          <span class="meta-item"><i class="fas fa-fire"></i> ${data.difficulty}</span>
+          <span class="meta-item"><i class="fas fa-eye"></i> ${data.views} 浏览</span>
+        </div>
+
+        <img src="${data.image}" alt="${data.title}" class="hero-img mb-4">
+
+        <p class="lead">${data.intro}</p>
+
+        <div class="row g-4 mt-2">
+          <div class="col-lg-4">
+            <div class="article-box p-3 h-100">
+              <h3 class="section-title mt-0"><i class="fas fa-list-ul"></i> 食材准备</h3>
+              <ul class="mb-0">
+                ${data.ingredients.map(item => `<li class="mb-2">${item}</li>`).join("")}
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="article-box p-3 h-100">
+              <h3 class="section-title mt-0"><i class="fas fa-flag-checkered"></i> 操作步骤</h3>
+              ${data.steps.map(step => `
+                <div class="mb-4">
+                  <h5 class="fw-bold">${step.title}</h5>
+                  <p>${step.text}</p>
+                  <img src="${step.img}" alt="${step.title}" class="step-img">
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+
+        <div class="article-box p-3 mt-4">
+          <h3 class="section-title mt-0"><i class="fas fa-lightbulb"></i> 小贴士</h3>
+          <ul class="mb-0">
+            ${data.tips.map(tip => `<li class="mb-2">${tip}</li>`).join("")}
+          </ul>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mt-4 nav-btns">
+          <div>
+            ${prevSlug ? `<a href="/tutorials/detail.html?slug=${prevSlug}" class="btn btn-outline-primary"><i class="fas fa-arrow-left"></i> 上一篇</a>` : ""}
+          </div>
+          <div class="d-flex gap-2">
+            <a href="${backLink.href}" class="btn btn-primary"><i class="fas fa-list"></i> 返回列表</a>
+            ${nextSlug ? `<a href="/tutorials/detail.html?slug=${nextSlug}" class="btn btn-outline-primary">下一篇 <i class="fas fa-arrow-right"></i></a>` : ""}
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
