@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手机技巧 - HowToGuide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--primary:#007bff;--secondary:#f8f9fa;--text:#333;}
+    body{color:var(--text);background:#fff;}
+    .header-top{background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);position:sticky;top:0;z-index:1000;padding:.5rem 0;}
+    .brand-title{color:var(--primary);font-weight:700;}
+    .category-nav{background:var(--secondary);padding:.5rem 0;margin:1rem 0;}
+    .category-link{color:var(--text);font-size:.95rem;margin:0 .8rem;text-decoration:none;white-space:nowrap;}
+    .category-link:hover,.category-link.active{color:var(--primary);text-decoration:underline;font-weight:600;}
+    .tutorial-card{border:none!important;box-shadow:0 2px 8px rgba(0,0,0,.08);border-radius:10px!important;overflow:hidden;height:100%;transition:transform .3s ease, box-shadow .3s ease;}
+    .tutorial-card:hover{transform:translateY(-5px);box-shadow:0 8px 18px rgba(0,0,0,.12);}
+    .tutorial-img{height:190px;object-fit:cover;}
+    .tutorial-title{font-size:1.05rem;font-weight:600;color:var(--text);text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:3rem;}
+    .tutorial-title:hover{color:var(--primary);text-decoration:underline;}
+    .section-title{font-size:1.6rem;font-weight:700;margin:1.5rem 0 1rem;display:flex;align-items:center;}
+    .section-title i{color:var(--primary);margin-right:.5rem;}
+    .footer{background:var(--secondary);padding:2rem 0;margin-top:3rem;}
+    .footer-link{color:var(--text);font-size:.9rem;margin:0 .5rem;text-decoration:none;}
+    .footer-link:hover{color:var(--primary);text-decoration:underline;}
+  </style>
+</head>
+<body>
+  <header class="header-top">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3">
+      <a href="/" class="text-decoration-none">
+        <h1 class="fs-2 brand-title mb-0"><i class="fas fa-book-open"></i> HowToGuide</h1>
+      </a>
+      <div class="d-flex align-items-center">
+        <a href="/auth/login.html" class="btn btn-outline-primary me-2">登录</a>
+        <a href="/auth/register.html" class="btn btn-primary">注册</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="category-nav">
+    <div class="container d-flex justify-content-center flex-wrap">
+      <a href="/categories/life.html" class="category-link"><i class="fas fa-home"></i> 生活家居</a>
+      <a href="/categories/food.html" class="category-link"><i class="fas fa-utensils"></i> 美食烹饪</a>
+      <a href="/categories/tech.html" class="category-link"><i class="fas fa-laptop"></i> 电脑科技</a>
+      <a href="/categories/phone.html" class="category-link active"><i class="fas fa-mobile-alt"></i> 手机技巧</a>
+      <a href="/categories/pet.html" class="category-link"><i class="fas fa-paw"></i> 宠物护理</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2 class="section-title"><i class="fas fa-mobile-alt"></i> 手机技巧教程</h2>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
+      <div class="col">
+        <div class="card tutorial-card">
+          <a href="/tutorials/detail.html?slug=cache-clean">
+            <img src="https://picsum.photos/seed/cache-clean/800/600" alt="缓存清理" class="card-img-top tutorial-img">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/tutorials/detail.html?slug=cache-clean" class="tutorial-title">手机缓存清理，运行更流畅</a>
+            </h5>
+            <p class="card-text text-muted small mt-2 mb-0">手机优化 | 简单 | 日常技巧</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card tutorial-card">
+          <a href="/tutorials/detail.html?slug=battery-save">
+            <img src="https://picsum.photos/seed/battery-save/800/600" alt="省电设置" class="card-img-top tutorial-img">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/tutorials/detail.html?slug=battery-save" class="tutorial-title">手机省电设置，续航明显提升</a>
+            </h5>
+            <p class="card-text text-muted small mt-2 mb-0">电池优化 | 简单 | 续航提升</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card tutorial-card">
+          <a href="/tutorials/detail.html?slug=wechat-backup">
+            <img src="https://picsum.photos/seed/wechat-backup/800/600" alt="微信备份" class="card-img-top tutorial-img">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/tutorials/detail.html?slug=wechat-backup" class="tutorial-title">微信聊天记录备份与迁移</a>
+            </h5>
+            <p class="card-text text-muted small mt-2 mb-0">数据备份 | 中等 | 换机必备</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card tutorial-card">
+          <a href="/tutorials/detail.html?slug=photo-tips">
+            <img src="https://picsum.photos/seed/photo-tips/800/600" alt="拍照技巧" class="card-img-top tutorial-img">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/tutorials/detail.html?slug=photo-tips" class="tutorial-title">手机拍照构图与夜景技巧</a>
+            </h5>
+            <p class="card-text text-muted small mt-2 mb-0">摄影技巧 | 简单 | 出片提升</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="mb-3">
+        <a href="/" class="footer-link">首页</a>
+        <a href="/categories/life.html" class="footer-link">生活家居</a>
+        <a href="/categories/food.html" class="footer-link">美食烹饪</a>
+        <a href="/categories/tech.html" class="footer-link">电脑科技</a>
+        <a href="/categories/phone.html" class="footer-link">手机技巧</a>
+        <a href="/categories/pet.html" class="footer-link">宠物护理</a>
+      </div>
+      <p class="text-muted mb-0">© 2026 HowToGuide</p>
+    </div>
+  </footer>
+</body>
+</html>
