@@ -1,275 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>注册 - HowToGuide</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* 复用全局样式，确保视觉统一 */
-    :root {
-      --primary-color: #007bff;
-      --secondary-color: #f8f9fa;
-      --text-color: #333;
-      --light-gray: #e9ecef;
-      --danger-color: #dc3545;
-    }
-    .header-top {
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 0.5rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    /* 注册卡片样式：居中显示，带阴影 */
-    .register-card {
-      max-width: 550px;
-      margin: 2.5rem auto;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
-      border: none;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .register-header {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 1.2rem 0;
-      text-align: center;
-    }
-    .register-header h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin: 0;
-    }
-    .register-body {
-      padding: 2rem;
-    }
-    /* 表单图标样式 */
-    .form-icon {
-      color: var(--primary-color);
-      width: 1.2rem;
-      text-align: center;
-    }
-    /* 表单验证提示样式 */
-    .error-hint {
-      color: var(--danger-color);
-      font-size: 0.85rem;
-      margin-top: 0.3rem;
-      display: none; /* 默认隐藏，验证失败时显示 */
-    }
-    /* 页脚样式 */
-    .footer {
-      background-color: var(--secondary-color);
-      padding: 1.5rem 0;
-      margin-top: 3rem;
-    }
-    .footer-link {
-      color: var(--text-color);
-      font-size: 0.9rem;
-      margin: 0 0.5rem;
-      text-decoration: none;
-    }
-    .footer-link:hover {
-      color: var(--primary-color);
-      text-decoration: underline;
-    }
-    /* 适配手机端 */
-    @media (max-width: 576px) {
-      .register-body {
-        padding: 1.5rem;
-      }
-      .header-top .container {
-        padding: 0 1rem;
-      }
-    }
+    body{background:#f8f9fa;}
+    .auth-box{max-width:420px;margin:8vh auto;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:2rem;}
   </style>
 </head>
 <body>
-  <!-- 头部导航：包含“返回首页”和“跳转登录”按钮 -->
-  <header class="header-top">
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-between">
-        <!-- 左侧：返回首页（二级→一级跳转） -->
-        <a href="/" class="text-decoration-none d-flex align-items-center">
-          <i class="fas fa-arrow-left text-primary-color me-2"></i>
-          <h1 class="fs-2 text-primary-color mb-0">HowToGuide</h1>
-        </a>
-        <!-- 右侧：已有账号？跳转登录页（二级→二级跳转） -->
-        <div class="d-flex align-items-center">
-          <span class="me-2">已有账号？</span>
-          <a href="/auth/login.html" class="btn btn-outline-primary">登录</a>
-        </div>
-      </div>
+  <div class="auth-box">
+    <h2 class="mb-4 text-center">注册</h2>
+    <div class="mb-3">
+      <label class="form-label">用户名</label>
+      <input class="form-control" type="text" placeholder="请输入用户名">
     </div>
-  </header>
-
-  <!-- 注册表单主体（二级页面核心内容） -->
-  <main class="container">
-    <div class="card register-card">
-      <div class="register-header">
-        <h2>创建账号，开启教程之旅</h2>
-      </div>
-      <div class="card-body register-body">
-        <form id="registerForm">
-          <!-- 用户名输入框 -->
-          <div class="input-group mb-3">
-            <span class="input-group-text">
-              <i class="fas fa-user form-icon"></i>
-            </span>
-            <input type="text" id="username" class="form-control" placeholder="请输入用户名（3-15个字符）" required>
-          </div>
-          <div id="usernameError" class="error-hint">
-            <i class="fas fa-exclamation-circle"></i> 用户名需为3-15个字符，可包含字母、数字和下划线
-          </div>
-
-          <!-- 邮箱输入框 -->
-          <div class="input-group mb-3">
-            <span class="input-group-text">
-              <i class="fas fa-envelope form-icon"></i>
-            </span>
-            <input type="email" id="email" class="form-control" placeholder="请输入邮箱（用于登录和找回密码）" required>
-          </div>
-          <div id="emailError" class="error-hint">
-            <i class="fas fa-exclamation-circle"></i> 请输入有效的邮箱格式（如：xxx@example.com）
-          </div>
-
-          <!-- 密码输入框 -->
-          <div class="input-group mb-3">
-            <span class="input-group-text">
-              <i class="fas fa-lock form-icon"></i>
-            </span>
-            <input type="password" id="password" class="form-control" placeholder="请输入密码（至少6位，含字母和数字）" required>
-          </div>
-          <div id="passwordError" class="error-hint">
-            <i class="fas fa-exclamation-circle"></i> 密码需至少6位，且包含字母和数字
-          </div>
-
-          <!-- 确认密码输入框 -->
-          <div class="input-group mb-4">
-            <span class="input-group-text">
-              <i class="fas fa-lock form-icon"></i>
-            </span>
-            <input type="password" id="confirmPassword" class="form-control" placeholder="请再次输入密码" required>
-          </div>
-          <div id="confirmPasswordError" class="error-hint">
-            <i class="fas fa-exclamation-circle"></i> 两次输入的密码不一致，请重新输入
-          </div>
-
-          <!-- 注册协议勾选框 -->
-          <div class="form-check mb-4">
-            <input class="form-check-input" type="checkbox" id="agreeProtocol" required>
-            <label class="form-check-label" for="agreeProtocol">
-              我已阅读并同意 <a href="#" class="text-primary-color">《用户注册协议》</a> 和 <a href="#" class="text-primary-color">《隐私政策》</a>
-            </label>
-          </div>
-
-          <!-- 注册按钮 -->
-          <button type="submit" class="btn btn-primary w-100 py-2">注册账号</button>
-        </form>
-      </div>
+    <div class="mb-3">
+      <label class="form-label">邮箱</label>
+      <input class="form-control" type="email" placeholder="请输入邮箱">
     </div>
-  </main>
-
-  <!-- 页脚：包含“关于我们”“帮助中心”等二级链接 -->
-  <footer class="footer">
-    <div class="container">
-      <div class="d-flex flex-column align-items-center">
-        <div class="mb-3 flex-wrap justify-content-center d-flex">
-          <a href="/pages/about.html" class="footer-link">关于我们</a>
-          <a href="/pages/help.html" class="footer-link">帮助中心</a>
-          <a href="/pages/contact.html" class="footer-link">联系我们</a>
-          <a href="/pages/protocol.html" class="footer-link">用户协议</a>
-        </div>
-        <p class="text-muted small mb-0">© 2024 HowToGuide 版权所有 | 实用教程平台</p>
-      </div>
+    <div class="mb-3">
+      <label class="form-label">密码</label>
+      <input class="form-control" type="password" placeholder="请输入密码">
     </div>
-  </footer>
-
-  <!-- 表单验证与跳转逻辑JS -->
-  <script>
-    // 获取表单元素
-    const registerForm = document.getElementById('registerForm');
-    const username = document.getElementById('username');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirmPassword');
-    // 获取错误提示元素
-    const usernameError = document.getElementById('usernameError');
-    const emailError = document.getElementById('emailError');
-    const passwordError = document.getElementById('passwordError');
-    const confirmPasswordError = document.getElementById('confirmPasswordError');
-
-    // 用户名验证：3-15个字符，含字母、数字、下划线
-    function validateUsername() {
-      const reg = /^[a-zA-Z0-9_]{3,15}$/;
-      if (!reg.test(username.value.trim())) {
-        usernameError.style.display = 'block';
-        return false;
-      }
-      usernameError.style.display = 'none';
-      return true;
-    }
-
-    // 邮箱验证：符合邮箱格式
-    function validateEmail() {
-      const reg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!reg.test(email.value.trim())) {
-        emailError.style.display = 'block';
-        return false;
-      }
-      emailError.style.display = 'none';
-      return true;
-    }
-
-    // 密码验证：至少6位，含字母和数字
-    function validatePassword() {
-      const reg = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
-      if (!reg.test(password.value)) {
-        passwordError.style.display = 'block';
-        return false;
-      }
-      passwordError.style.display = 'none';
-      return true;
-    }
-
-    // 确认密码验证：与密码一致
-    function validateConfirmPassword() {
-      if (confirmPassword.value !== password.value) {
-        confirmPasswordError.style.display = 'block';
-        return false;
-      }
-      confirmPasswordError.style.display = 'none';
-      return true;
-    }
-
-    // 输入框失去焦点时触发验证
-    username.addEventListener('blur', validateUsername);
-    email.addEventListener('blur', validateEmail);
-    password.addEventListener('blur', validatePassword);
-    confirmPassword.addEventListener('blur', validateConfirmPassword);
-
-    // 表单提交时触发总验证
-    registerForm.addEventListener('submit', function(e) {
-      e.preventDefault(); // 阻止表单默认提交行为
-      
-      // 执行所有验证
-      const isUsernameValid = validateUsername();
-      const isEmailValid = validateEmail();
-      const isPasswordValid = validatePassword();
-      const isConfirmValid = validateConfirmPassword();
-      const isAgreeValid = document.getElementById('agreeProtocol').checked;
-
-      // 所有验证通过时，模拟注册成功并跳转
-      if (isUsernameValid && isEmailValid && isPasswordValid && isConfirmValid && isAgreeValid) {
-        alert(`注册成功！欢迎 ${username.value.trim()} 使用 HowToGuide～`);
-        // 跳转到登录页（注册成功后引导用户登录）
-        window.location.href = '/auth/login.html';
-      } else if (!isAgreeValid) {
-        alert('请阅读并同意用户注册协议和隐私政策');
-      }
-    });
-  </script>
+    <button class="btn btn-primary w-100">注册</button>
+    <div class="text-center mt-3">
+      <a href="/auth/login.html">已有账号？去登录</a>
+    </div>
+    <div class="text-center mt-2">
+      <a href="/">返回首页</a>
+    </div>
+  </div>
 </body>
 </html>
