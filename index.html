@@ -1,34 +1,321 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>实用生活技巧分享</title>
-  <link rel="stylesheet" href="style.css">
+    < <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HowToGuide - 实用生活教程平台</title>
+    <!-- 引入外部资源（Bootstrap用于快速布局，Font Awesome用于图标） -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 自定义样式：模拟WikiHow视觉风格 */
+        :root {
+            --primary-color: #007bff; /* 主色调（蓝色，贴近WikiHow品牌感） */
+            --secondary-color: #f8f9fa; /* 辅助色（浅灰，用于背景） */
+            --text-color: #333; /* 文本主色 */
+            --light-gray: #e9ecef; /* 浅灰色（边框、分割线） */
+        }
+
+        /* 头部导航样式 */
+        .header-top {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .search-bar {
+            max-width: 600px;
+        }
+
+        .search-input {
+            border-radius: 20px 0 0 20px !important;
+            border-right: none !important;
+        }
+
+        .search-btn {
+            border-radius: 0 20px 20px 0 !important;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* 分类导航样式 */
+        .category-nav {
+            background-color: var(--secondary-color);
+            padding: 0.5rem 0;
+        }
+
+        .category-link {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            margin: 0 0.8rem;
+            text-decoration: none;
+        }
+
+        .category-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* 教程卡片样式 */
+        .tutorial-card {
+            border: none !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 8px !important;
+            transition: transform 0.3s ease;
+        }
+
+        .tutorial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tutorial-img {
+            border-radius: 8px 8px 0 0 !important;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .tutorial-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .tutorial-title:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* 热门教程区域样式 */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        /* 页脚样式 */
+        .footer {
+            background-color: var(--secondary-color);
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-link {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1><a href=" ">实用生活技巧分享</a ></h1>
-    <p>简单、实用、一看就会的生活小妙招</p >
-  </header>
-  <main class="container">
-    <div class="article-list">
-      <div class="article-item">
-        <h2><a href="article-1.html">如何不用工具打开密封罐头</a ></h2>
-        <p>分享几个超简单的方法，不用开罐器也能轻松打开罐头...</p >
-      </div>
-      <div class="article-item">
-        <h2><a href="article-2.html">白衣服发黄最简单家用清洗方法</a ></h2>
-        <p>家里常见的材料就能解决，让白衣服恢复白净...</p >
-      </div>
-      <div class="article-item">
-        <h2><a href="article-3.html">旧手机不用了怎么正确恢复出厂设置</a ></h2>
-        <p>保护隐私的同时，让手机恢复出厂状态...</p >
-      </div>
-    </div>
-  </main>
-  <footer>
-    <p>&copy; 2026 实用生活技巧分享 | 零成本建站演示</p >
-  </footer>
-</body>
-</html>
+    <!-- 头部导航栏 -->
+    <header class="header-top py-3">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <!-- 网站Logo -->
+                <a href="#" class="text-decoration-none">
+                    <h1 class="fs-2 text-primary-color mb-0">
+                        <i class="fas fa-book-open"></i> HowToGuide
+                    </h1>
+                </a>
+
+                <!-- 搜索栏 -->
+                <div class="search-bar d-flex">
+                    <input type="text" class="form-control search-input" placeholder="搜索教程（例如：如何煮咖啡、如何修手机）" aria-label="Search">
+                    <button class="btn search-btn" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <!-- 用户入口 -->
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-outline-primary me-2">登录</a>
+                    <a href="#" class="btn btn-primary">注册</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 分类导航 -->
+    <nav class="category-nav">
+        <div class="container d-flex justify-content-center flex-wrap">
+            <a href="#" class="category-link"><i class="fas fa-home"></i> 生活家居</a>
+            <a href="#" class="category-link"><i class="fas fa-utensils"></i> 美食烹饪</a>
+            <a href="#" class="category-link"><i class="fas fa-laptop"></i> 电脑科技</a>
+            <a href="#" class="category-link"><i class="fas fa-mobile-alt"></i> 手机技巧</a>
+            <a href="#" class="category-link"><i class="fas fa-paw"></i> 宠物护理</a>
+            <a href="#" class="category-link"><i class="fas fa-graduation-cap"></i> 学习教育</a>
+            <a href="#" class="category-link"><i class="fas fa-heart"></i> 健康养生</a>
+            <a href="#" class="category-link"><i class="fas fa-car"></i> 汽车出行</a>
+            <a href="#" class="category-link"><i class="fas fa-paint-brush"></i> 艺术手工</a>
+            <a href="#" class="category-link"><i class="fas fa-gamepad"></i> 游戏娱乐</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="container py-5">
+        <!-- 推荐教程（Banner区域） -->
+        <section class="mb-6">
+            <div class="card bg-primary-color text-white rounded-8 overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="https://picsum.photos/id/237/800/400" alt="热门教程：如何训练宠物狗" class="img-fluid h-100 object-cover">
+                    </div>
+                    <div class="col-md-6 p-5 d-flex flex-column justify-center">
+                        <h2 class="fs-3 fw-bold mb-3">热门教程：如何科学训练宠物狗（新手入门）</h2>
+                        <p class="mb-4">详细步骤教你快速训练狗狗学会坐下、握手、定点排便，解决新手养宠常见问题，让宠物更听话！</p>
+                        <a href="#" class="btn btn-light text-primary-color w-25">查看教程</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 最新教程 -->
+        <section class="mb-6">
+            <h2 class="section-title">最新发布的教程</h2>
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                <!-- 教程卡片1 -->
+                <div class="col">
+                    <div class="card tutorial-card h-100">
+                        <img src="https://picsum.photos/id/42/400/300" alt="如何用微波炉做蛋糕" class="card-img-top tutorial-img">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="#" class="tutorial-title">如何用微波炉10分钟做戚风蛋糕</a></h5>
+                            <p class="card-text text-muted small">无需烤箱，材料简单，新手也能成功的快速甜品教程。</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                            <span class="text-muted small"><i class="fas fa-eye"></i> 1.2万次浏览</span>
+                            <span class="text-muted small"><i class="fas fa-star text-warning"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 教程卡片2 -->
+                <div class="col">
+                    <div class="card tutorial-card h-100">
+                        <img src="https://picsum.photos/id/96/400/300" alt="如何清理电脑灰尘" class="card-img-top tutorial-img">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="#" class="tutorial-title">电脑卡顿？教你彻底清理内部灰尘</a></h5>
+                            <p class="card-text text-muted small">安全拆卸电脑外壳，清理风扇和散热片，提升运行速度。</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                            <span class="text-muted small"><i class="fas fa-eye"></i> 8.5千次浏览</span>
+                            <span class="text-muted small"><i class="fas fa-star text-warning"></i> 4.6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 教程卡片3 -->
+                <div class="col">
+                    <div class="card tutorial-card h-100">
+                        <img src="https://picsum.photos/id/26/400/300" alt="如何拍摄星空照片" class="card-img-top tutorial-img">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="#" class="tutorial-title">手机也能拍星空！详细参数设置教程</a></h5>
+                            <p class="card-text text-muted small">无需专业相机，用手机拍摄银河、星轨，附后期修图技巧。</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                            <span class="text-muted small"><i class="fas fa-eye"></i> 2.3万次浏览</span>
+                            <span class="text-muted small"><i class="fas fa-star text-warning"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 教程卡片4 -->
+                <div class="col">
+                    <div class="card tutorial-card h-100">
+                        <img src="https://picsum.photos/id/139/400/300" alt="如何给猫咪洗澡" class="card-img-top tutorial-img">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="#" class="tutorial-title">猫咪抗拒洗澡？3步轻松搞定</a></h5>
+                            <p class="card-text text-muted small">准备工具、安抚情绪、正确清洗步骤，避免猫咪应激。</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                            <span class="text-muted small"><i class="fas fa-eye"></i> 5.7千次浏览</span>
+                            <span class="text-muted small"><i class="fas fa-star text-warning"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门分类教程 -->
+        <section>
+            <h2 class="section-title">按分类浏览热门教程</h2>
+            
+            <!-- 美食烹饪分类 -->
+            <div class="mb-6">
+                <h3 class="fs-5 fw-bold mb-3 text-primary-color"><i class="fas fa-utensils"></i> 美食烹饪</h3>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="d-flex align-items-center p-3 border rounded-lg hover:bg-light-gray transition-colors">
+                            <img src="https://picsum.photos/id/292/100/80" alt="如何做红烧肉" class="rounded me-3">
+                            <span class="tutorial-title">如何做出口感软糯的红烧肉（零失败）</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                        <div class="d-flex align-items-center p-3 border rounded-lg hover:bg-light-gray transition-colors">
+                            <img src="https://picsum.photos/id/488/100/80" alt="如何煮意大利面" class="rounded me-3">
+                            <span class="tutorial-title">煮意大利面不粘坨的秘诀，附酱汁做法</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                        <div class="d-flex align-items-center p-3 border rounded-lg hover:bg-light-gray transition-colors">
+                            <img src="https://picsum.photos/id/431/100/80" alt="如何做酸奶" class="rounded me-3">
+                            <span class="tutorial-title">在家自制无糖酸奶，只需2种材料</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 电脑科技分类 -->
+            <div>
+                <h3 class="fs-5 fw-bold mb-3 text-primary-color"><i class="fas fa-laptop"></i> 电脑科技</h3>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="d-flex align-items-center p-3 border rounded-lg hover:bg-light-gray transition-colors">
+                            <img src="https://picsum.photos/id/180/100/80" alt="如何重装系统" class="rounded me-3">
+                            <span class="tutorial-title">Windows 11系统重装教程（小白友好）</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                        <div class="d-flex align-items-center p-3 border rounded-lg hover:bg-light-gray transition-colors">
+                            <img src="https://picsum.photos/id/4/100/80" alt="如何恢复删除文件" class="rounded me-3">
+                            <span class="tutorial-title">误删文件？3种免费恢复方法</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                        <div class="d-flex align-items-center p-3 border rounded-lg hover:bg-light-gray transition-colors">
+                            <img src="https://picsum.photos/id/60/100/80" alt="如何清理C盘" class="rounded me-3">
+                            <span class="tutorial-title">C盘满了？5分钟释放100G空间</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center">
+                <!-- 页脚导航链接 -->
+                <div class="mb-3">
+                    <a href="#" class="footer-link">关于我们</a>
+                    <a href="#" class="footer-link">联系我们</a>
+                    <a href="#" class="footer-link">投稿教程</a>
+                    <a href="#" class="footer-link">隐私政策</a>
+                    <a href="#" class="footer-link">使用条款</a>
+                    <a href="#" class="footer-link">帮助中心</a>
+                </div>
+
+                <!-- 社交媒体图标 -->
+                <div class="mb-3">
+                    <a href="#" class="text-primary-color me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" class="text-primary-color me-3"><i class="fab fa
