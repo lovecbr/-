@@ -7,74 +7,210 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .header-top { background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 0.5rem 0; }
-    .login-card { max-width: 500px; margin: 3rem auto; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border: none; border-radius: 10px; }
-    .login-header { text-align: center; padding: 1.5rem 0; border-bottom: 1px solid #eee; }
-    .login-body { padding: 2rem; }
-    .form-icon { color: var(--primary-color); }
-    .footer { background: var(--secondary-color); padding: 2rem 0; margin-top: 3rem; }
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #f8f9fa;
+      --text-color: #333;
+      --danger-color: #dc3545;
+    }
+    .header-top {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .login-card {
+      max-width: 500px;
+      margin: 3rem auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .login-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1.2rem 0;
+      text-align: center;
+    }
+    .login-header h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .login-body {
+      padding: 2rem;
+    }
+    .form-icon {
+      color: var(--primary-color);
+    }
+    /* 错误提示样式 */
+    .error-hint {
+      color: var(--danger-color);
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      display: none; /* 默认隐藏 */
+    }
+    .footer {
+      background-color: var(--secondary-color);
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+    }
+    .footer-link {
+      color: var(--text-color);
+      font-size: 0.9rem;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+    .footer-link:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <!-- 头部导航（复用） -->
+  <!-- 头部导航 -->
   <header class="header-top">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between">
-        <a href="/" class="text-decoration-none">
-          <h1 class="fs-2 text-primary-color mb-0"><i class="fas fa-book-open"></i> HowToGuide</h1>
+        <a href="/" class="text-decoration-none d-flex align-items-center">
+          <i class="fas fa-arrow-left text-primary-color me-2"></i>
+          <h1 class="fs-2 text-primary-color mb-0">HowToGuide</h1>
         </a>
         <div class="d-flex align-items-center">
-          <a href="/auth/register.html" class="btn btn-primary">注册账号</a>
+          <span class="me-2">没有账号？</span>
+          <a href="/auth/register.html" class="btn btn-primary">注册</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- 登录表单 -->
+  <!-- 登录表单：关键是给表单加ID，按钮类型设为submit -->
   <main class="container">
     <div class="card login-card">
       <div class="login-header">
-        <h2 class="fw-bold text-primary-color">用户登录</h2>
-        <p class="text-muted">登录后可收藏教程、发表评论</p>
+        <h2>账号登录</h2>
       </div>
       <div class="card-body login-body">
-        <form>
+        <!-- 表单必须加ID，用于JS绑定提交事件 -->
+        <form id="loginForm">
+          <!-- 邮箱输入框 -->
           <div class="input-group mb-3">
-            <span class="input-group-text"><i class="fas fa-envelope form-icon"></i></span>
-            <input type="email" class="form-control" placeholder="请输入邮箱" required>
+            <span class="input-group-text">
+              <i class="fas fa-envelope form-icon"></i>
+            </span>
+            <input type="email" id="loginEmail" class="form-control" placeholder="请输入注册邮箱" required>
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text"><i class="fas fa-lock form-icon"></i></span>
-            <input type="password" class="form-control" placeholder="请输入密码" required>
+          <!-- 邮箱错误提示 -->
+          <div id="emailError" class="error-hint">
+            <i class="fas fa-exclamation-circle"></i> 请输入有效的邮箱格式（如：xxx@example.com）
           </div>
-          <div class="d-flex justify-content-between mb-3">
+
+          <!-- 密码输入框 -->
+          <div class="input-group mb-3 mt-4">
+            <span class="input-group-text">
+              <i class="fas fa-lock form-icon"></i>
+            </span>
+            <input type="password" id="loginPassword" class="form-control" placeholder="请输入密码" required>
+          </div>
+          <!-- 密码错误提示 -->
+          <div id="passwordError" class="error-hint">
+            <i class="fas fa-exclamation-circle"></i> 密码不能为空（至少6位字符）
+          </div>
+
+          <!-- 记住我与忘记密码 -->
+          <div class="d-flex justify-content-between mb-4 mt-3">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="remember">
-              <label class="form-check-label" for="remember">记住我</label>
+              <input class="form-check-input" type="checkbox" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">记住我（7天内免登录）</label>
             </div>
             <a href="#" class="text-primary-color">忘记密码？</a>
           </div>
-          <button type="submit" class="btn btn-primary w-100">登录</button>
-          <div class="text-center mt-3">
-            <span>还没有账号？</span>
-            <a href="/auth/register.html" class="text-primary-color">立即注册</a>
-          </div>
+
+          <!-- 登录按钮：必须设为type="submit"，才能触发表单提交 -->
+          <button type="submit" class="btn btn-primary w-100 py-2">登录</button>
         </form>
       </div>
     </div>
   </main>
 
-  <!-- 页脚（复用） -->
+  <!-- 页脚 -->
   <footer class="footer">
     <div class="container">
       <div class="d-flex flex-column align-items-center">
         <div class="mb-3">
           <a href="/pages/about.html" class="footer-link">关于我们</a>
           <a href="/pages/help.html" class="footer-link">帮助中心</a>
+          <a href="/pages/protocol.html" class="footer-link">用户协议</a>
         </div>
         <p class="text-muted small">© 2024 HowToGuide 版权所有</p>
       </div>
     </div>
   </footer>
+
+  <!-- 核心：登录表单提交逻辑JS（解决“点击没反应”的关键） -->
+  <script>
+    // 1. 获取表单和元素（确保选择器与HTML中的ID一致）
+    const loginForm = document.getElementById('loginForm'); // 表单ID
+    const loginEmail = document.getElementById('loginEmail'); // 邮箱输入框ID
+    const loginPassword = document.getElementById('loginPassword'); // 密码输入框ID
+    const emailError = document.getElementById('emailError'); // 邮箱错误提示ID
+    const passwordError = document.getElementById('passwordError'); // 密码错误提示ID
+
+    // 2. 邮箱格式验证
+    function validateEmail() {
+      const emailValue = loginEmail.value.trim();
+      const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      
+      if (!emailReg.test(emailValue)) {
+        emailError.style.display = 'block'; // 显示错误提示
+        return false;
+      }
+      emailError.style.display = 'none'; // 隐藏错误提示
+      return true;
+    }
+
+    // 3. 密码长度验证
+    function validatePassword() {
+      const passwordValue = loginPassword.value.trim();
+      
+      if (passwordValue.length < 6) {
+        passwordError.style.display = 'block'; // 显示错误提示
+        return false;
+      }
+      passwordError.style.display = 'none'; // 隐藏错误提示
+      return true;
+    }
+
+    // 4. 输入框失去焦点时触发验证（提升用户体验）
+    loginEmail.addEventListener('blur', validateEmail);
+    loginPassword.addEventListener('blur', validatePassword);
+
+    // 5. 表单提交事件（点击“登录”按钮后执行）
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // 阻止表单默认刷新行为（关键：避免点击后页面刷新但无反应）
+      
+      // 执行所有验证
+      const isEmailValid = validateEmail();
+      const isPasswordValid = validatePassword();
+
+      // 6. 验证通过：模拟登录成功（实际项目需对接后端接口）
+      if (isEmailValid && isPasswordValid) {
+        // 显示登录中提示
+        const loginBtn = loginForm.querySelector('button[type="submit"]');
+        loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 登录中...';
+        loginBtn.disabled = true; // 禁用按钮，防止重复点击
+
+        // 模拟后端请求延迟（1.5秒后跳转）
+        setTimeout(() => {
+          alert(`登录成功！欢迎回来，${loginEmail.value.split('@')[0]}～`);
+          // 登录成功后跳转首页（或用户中心）
+          window.location.href = '/';
+        }, 1500);
+      }
+    });
+  </script>
 </body>
 </html>
